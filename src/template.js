@@ -1,5 +1,7 @@
 import createForm from "./form.js";
 
+
+
 const temp = () =>{
     const div = document.createElement('div');
     div.classList.add('container');
@@ -12,7 +14,15 @@ const temp = () =>{
     `
     const btn = document.createElement('button');
     btn.classList.add('add');
-    btn.addEventListener('click', createForm());
+    btn.addEventListener('click', ()=>{
+        const title = document.querySelector('#title');
+        const date = document.querySelector('#date');
+
+        const form = document.createElement('div');
+        form.innerHTML += createForm(title.value, date.value);
+
+        div.appendChild(form);
+    });
     btn.textContent = 'ADD';
     div.appendChild(btn);
     document.body.appendChild(div);
