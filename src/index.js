@@ -1,1 +1,4 @@
-console.log('dg');
+import temp from "./template";
+
+
+temp();

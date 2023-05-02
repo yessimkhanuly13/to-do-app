@@ -1,1 +1,1 @@
-console.log("dg");
+(()=>{"use strict";(()=>{const t=document.createElement("div");t.classList.add("container"),t.innerHTML='\n        <h1>TO DO LIST</h1>\n        <input type="text" id="title"></input>\n        <input type="text" id="body"></input>\n        <input type="date" id="date"></input>\n    ';const e=document.createElement("button");e.classList.add("add"),e.addEventListener("click",void console.log("dsf")),e.textContent="ADD",t.appendChild(e),document.body.appendChild(t)})()})();
