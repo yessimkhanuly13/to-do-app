@@ -1,31 +1,15 @@
-import createForm from "./todo.js";
-
-
-
 const temp = () =>{
-    const div = document.createElement('div');
-    div.classList.add('container');
+    const container = document.createElement('div');
+    container.classList.add('container');   
 
-    div.innerHTML = `
-        <h1>TO DO LIST</h1>
-        <input type="text" id="title"></input>
-        <input type="text" id="body"></input>
-        <input type="date" id="date"></input>
-    `
-    const btn = document.createElement('button');
-    btn.classList.add('add');
-    btn.addEventListener('click', ()=>{
-        const title = document.querySelector('#title');
-        const date = document.querySelector('#date');
+    container.innerHTML = `<a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500">
+        <div class="flex items-center space-x-3">
+        <h3 class="text-slate-900 group-hover:text-white text-sm font-semibold">New project</h3>
+        </div>
+        <p class="text-slate-500 group-hover:text-white text-sm">Create a new project.</p>
+    </a>`
 
-        const form = document.createElement('div');
-        form.innerHTML += createForm(title.value, date.value);
-
-        div.appendChild(form);
-    });
-    btn.textContent = 'ADD';
-    div.appendChild(btn);
-    document.body.appendChild(div);
+    document.body.appendChild(container);
 }
 
 export default temp;
