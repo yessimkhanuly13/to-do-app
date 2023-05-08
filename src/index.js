@@ -8,6 +8,7 @@ const projects = [];
 
 temp();
 
+const project = new Project('Inbox');
 
 const add = document.querySelector('.add');
 add.addEventListener('click', ()=>{
@@ -15,5 +16,18 @@ add.addEventListener('click', ()=>{
     const project = new Project(inp.value);
     projects.push(project);
     console.log(projects);
+    const task = document.querySelector('.task');
+    task.style.display = 'flex';
+})
 
+
+const taskAdd = document.querySelector('#task-add');
+taskAdd.addEventListener('click', ()=>{
+    const title = document.querySelector('#title-task');
+    const descr = document.querySelector('#descr');
+    const date = document.querySelector('#date');
+    const priority = document.querySelector('#priority');
+
+    project.addTask(title.value, descr.value, date.value, priority.value);
+    console.log(project);
 })
