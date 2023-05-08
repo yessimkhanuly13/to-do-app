@@ -1,23 +1,43 @@
-export class Todo {
-    constructor(title, duedate, description, priority){
+export class Task {
+    constructor (title, description, date, priority){
         this.title = title;
-        this.duedate = duedate;
         this.description = description;
+        this.date = date;
         this.priority = priority;
+        this.completed = false;
     }
-}
 
-// const createForm = (title, date) =>{
-//     const todo = new Todo(title, date);
-    
-//     const form = `
-//         <div class="form">
-//             ${todo.title}<br>
-//             ${todo.date}<br>
-//             ${todo.body}<br>
-//             <button>Edit</button>
-//             <button>Remove</button>
-//         </div>
-//     `
-//     return form;
-// }
+    getTitle(){
+        return this.title;
+    }
+
+    setTitle(title){
+        this.title = title;
+
+    }
+
+    getDescription(){
+        return this.description;
+    }
+
+    setDesctiption(description){
+        this.description = description;
+    }
+
+    getDate(){
+        return this.date;
+    }
+
+    setDate(date){
+        this.date = date;
+    }
+
+    markAsCompleted(){
+        this.comleted = true;
+    }
+
+    isCompleted(){
+        return this.comleted;
+    }
+
+}

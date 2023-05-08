@@ -1,15 +1,33 @@
 const temp = () =>{
-    const container = document.createElement('div');
-    container.classList.add('container');   
+    const Header = (()=>{
+        const header = document.createElement('div');
+        header.classList.add('header');
 
-    container.innerHTML = `<a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500">
-        <div class="flex items-center space-x-3">
-        <h3 class="text-slate-900 group-hover:text-white text-sm font-semibold">New project</h3>
-        </div>
-        <p class="text-slate-500 group-hover:text-white text-sm">Create a new project.</p>
-    </a>`
+        const h1 = document.createElement('h1');
+        h1.textContent = "To Do List";
+        header.appendChild(h1);
 
-    document.body.appendChild(container);
+        const div = document.createElement('div');
+        div.classList.add('body');
+        
+        document.body.appendChild(header);
+        document.body.appendChild(div);
+    })();
+
+    const Body = (()=>{
+        const body = `
+                <label for="title">Title of Project</label>
+                <input type="text" id="title"></input>
+                <button class="add">Add Project</button>
+        `
+        document.querySelector('.body').innerHTML = body;
+    })();
+
+
+    return {
+        Header,
+        Body
+    }
 }
 
 export default temp;
