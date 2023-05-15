@@ -7,6 +7,15 @@ export class Task {
         this.completed = false;
     }
 
+    editTitle(title){
+        this.title = title;
+    }
+
+    editDecription(description){
+        this.description = description;
+    }
+
+
     getTitle(){
         return this.title;
     }
@@ -33,11 +42,9 @@ export class Task {
     }
 
     markAsCompleted(){
-        this.comleted = true;
-    }
-
-    isCompleted(){
-        return this.comleted;
+        this.completed = true;
     }
 
 }
+
+export default Task;

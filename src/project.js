@@ -1,13 +1,10 @@
-import { Task } from "./todo";
-
-export class Project {
+class Project {
     constructor(title){
         this.title = title;
         this.tasks = [];
     }
 
-    addTask(title, description, date, priority){
-        const task = new Task(title, description, date, priority);
+    addTask(task){
         this.tasks.push(task);
     }
 
@@ -18,8 +15,23 @@ export class Project {
         }
     }
 
+    getCompletedTasks() {
+        return this.tasks.filter(task => task.completed);
+    }
+
+    getIncompleteTasks(){
+        return this.tasks.filter(task=>!task.completed)
+    }
+
     getTasks(){
         return this.tasks;
     }
+
+    editTitle(title){
+        this.title = title;
+    }
+
 }
+
+export default Project;
 
