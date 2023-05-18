@@ -31,6 +31,10 @@ class Project {
         this.title = title;
     }
 
+    getTitle(){
+        return this.title;
+    }
+
 }
 
 export default Project;
