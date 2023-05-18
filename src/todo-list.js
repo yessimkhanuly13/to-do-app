@@ -20,7 +20,7 @@ class TodoList{
     }
     
     getProjectByName(name){
-        return this.projects.find(project=>project.name === name );
+        return this.projects.find(project=>project.title === name );
     }
     
     getAllTasks(){

@@ -11,24 +11,25 @@ const inpDate = document.querySelector('#inpDate');
 const inpDesc = document.querySelector('#inpDesc');
 const inpTitle = document.querySelector('#inpTitle');
 const selectPriority = document.querySelector('#selectPriority');
+const selectProject = document.querySelector('#selectProject');
+
+const inbox = new Project("Inbox");
+todoList.addProject(inbox);
 
 addProject.addEventListener('click', ()=>{
     const project = new Project(projectInput.value);
     todoList.addProject(project);
     const proj = document.createElement("li");
+    const option = `<option value="${project.title}">${project.title}</option>`;
+    selectProject.innerHTML += option;
     proj.innerText = `${project.title}`;
     boxProj.appendChild(proj);
-    console.log(project)
-    console.log(todoList)
 })
-// project.addTask("do lunch", "go to store buy somethind, do something", "01.02.2023", "high");
-// project.addTask("do dinner", "go to store buy mkdsm, do something", "22.02.2023", "medium");
-
-// (title, description, date, priority){
 
 addTask.addEventListener('click', ()=>{
     const task = new Task(inpTitle.value, inpDesc.value, inpDate.value, selectPriority.value);
-    console.log(task);
-    console.log(selectPriority.value);
+    // todoList.getProjectByName(selectProject.value);
+    const project = todoList.getProjectByName(selectProject.value);
+    project.addTask(task);
 })
 
