@@ -7,6 +7,10 @@ const addProject = document.querySelector('#addProject');
 const projectInput = document.querySelector('#projectInput'); 
 const todoList = new TodoList();
 const boxProj = document.querySelector('.project-list');
+const inpDate = document.querySelector('#inpDate');
+const inpDesc = document.querySelector('#inpDesc');
+const inpTitle = document.querySelector('#inpTitle');
+const selectPriority = document.querySelector('#selectPriority');
 
 addProject.addEventListener('click', ()=>{
     const project = new Project(projectInput.value);
@@ -20,4 +24,11 @@ addProject.addEventListener('click', ()=>{
 // project.addTask("do lunch", "go to store buy somethind, do something", "01.02.2023", "high");
 // project.addTask("do dinner", "go to store buy mkdsm, do something", "22.02.2023", "medium");
 
+// (title, description, date, priority){
+
+addTask.addEventListener('click', ()=>{
+    const task = new Task(inpTitle.value, inpDesc.value, inpDate.value, selectPriority.value);
+    console.log(task);
+    console.log(selectPriority.value);
+})
 
