@@ -41,6 +41,10 @@ function handleAddTask(){
     project.addTask(task);
 }
 
+// function renderTodoList(){
+
+// }
+
 boxProj.addEventListener('click', (e)=>{
    const project = todoList.getProjectByName(e.target.outerText);
    console.log(project.getTasks())
