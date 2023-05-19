@@ -8,7 +8,9 @@
 }
 
 
-
+#all-tasks{
+    margin-top: 5vh;
+}
 
 .body{
     display: flex;
@@ -22,7 +24,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+.project input{
+    margin-top: 10vh;
 }
 
 .task{
@@ -84,4 +89,24 @@ header button{
 a{
     text-decoration: none;
     color: black;
+}
+#inpDesc{
+    height: 10vh;
+
+}
+
+#top{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+#bot{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+#bot button{
+    width: 8vw;
 }

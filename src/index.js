@@ -15,6 +15,7 @@ const selectProject = document.querySelector('#selectProject');
 const boxTask = document.querySelector('.task-list');
 const addTaskImg = document.querySelector('#addTaskImg');
 const toggle = document.querySelector('#toggle');
+const allTasks = document.querySelector('#all-tasks');
 
 const inbox = new Project("Inbox");
 todoList.addProject(inbox);
@@ -66,7 +67,7 @@ function renderTasks(project){
     boxTask.innerHTML = `<h3>${project.title}</h3>`;
     project.getTasks().forEach(element => {
         const temp = `<input type="checkbox" id=${element.title}/>
-        <label for=${element.title}>${element.title}</label>
+        <label for=${element.title}>${element.title} ${element.date} ${element.priority} ${element.description}</label>
         `;
         boxTask.innerHTML += temp;
     });
@@ -96,4 +97,15 @@ addTaskImg.addEventListener('click', (e)=>{
     const task = document.querySelector('.task')
     task.style.display = 'flex';
     addTaskImg.style.display = 'none';
+})
+
+allTasks.addEventListener('click', ()=>{
+    boxTask.innerHTML = `<h3>All Tasks</h3>`;
+    todoList.getAllTasks().forEach((element)=>{
+        const temp = `<input type="checkbox" id=${element.title}/>
+        <label for=${element.title}>${element.title} ${element.date} ${element.priority} ${element.description}</label>
+        `;
+        boxTask.innerHTML += temp;
+        console.log(element)
+    })
 })
