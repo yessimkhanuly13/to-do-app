@@ -14,6 +14,7 @@ const selectPriority = document.querySelector('#selectPriority');
 const selectProject = document.querySelector('#selectProject');
 const boxTask = document.querySelector('.task-list');
 const addTaskImg = document.querySelector('#addTaskImg');
+const toggle = document.querySelector('#toggle');
 
 const inbox = new Project("Inbox");
 todoList.addProject(inbox);
@@ -21,15 +22,25 @@ boxProj.innerHTML += `<li><a href="#">${inbox.title}</a></li>`;
 
 
 function handleAddProject(){
+    if(projectInput.value === ''){
+        alert('Fill the input');
+        return;
+    }
+
     const project = new Project(projectInput.value);
     todoList.addProject(project);
     const proj = `<li><a href="#">${project.title}</a></li>`;
     const option = `<option value="${project.title}">${project.title}</option>`;
     selectProject.innerHTML += option;
     boxProj.innerHTML += proj;
+    projectInput.value = '';
 }
 
 function handleAddTask(){
+    if(inpTitle.value === '' || selectPriority.value === '' || inpDate.value === '' || inpDesc.value === '' ){
+        alert('Fill the all inputs');
+        return;
+    }
     const task = new Task(inpTitle.value, inpDesc.value, inpDate.value, selectPriority.value);
     // const taskTemp = `<div class="task-temp">
     //     <input type="checkbox" id="checkbox"></input>
@@ -44,6 +55,11 @@ function handleAddTask(){
     taskDiv.style.display = 'none';
     project.addTask(task);
     renderTasks(project);
+    inpTitle.value = '';
+    selectPriority.value = '';
+    inpDate.value = '';
+    inpDesc.value = '';
+
 }
 
 function renderTasks(project){
@@ -67,6 +83,14 @@ boxProj.addEventListener('click', (e)=>{
 
 addProject.addEventListener('click', handleAddProject);
 addTask.addEventListener('click', handleAddTask);
+toggle.addEventListener('click', (e)=>{
+    const projectList = document.querySelector('.project');
+    if(projectList.style.display !== 'none'){
+        projectList.style.display = 'none';
+    }else{
+        projectList.style.display = 'flex';
+    }
+})
 
 addTaskImg.addEventListener('click', (e)=>{
     const task = document.querySelector('.task')
