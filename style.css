@@ -1,12 +1,13 @@
+
+ @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@1,300&display=swap');
+
 *{
     padding: 0;
     margin: 0;
+    font-family: 'Chivo Mono', monospace;
 }
 
-h1{
-    display: flex;
-    justify-content: center;
-}
+
 
 
 .body{
@@ -32,6 +33,7 @@ h1{
 }
 
 button{
+    background-color: inherit;
     width: 7vw;
     height: 4vh;
 }
@@ -46,15 +48,23 @@ button{
 
 main{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     height: 90vh;
     width: 95vw;
 }
 
 header{
+    display: flex;
     background-color: rgb(233, 73, 71);
     padding: 1vh;
     color: white;
+    text-align: center;
+}
+
+header button{
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .project{
@@ -69,4 +79,9 @@ header{
     border: none;
     background-color: inherit;
     margin-bottom: 3vh;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
