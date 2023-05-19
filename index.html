@@ -15,23 +15,28 @@
     </header>
     <main>
       <div class="project">
+          <button id="all-tasks">All Tasks</button>
           <input type="text" id="projectInput" placeholder="Title">
           <button id="addProject">Add</button> 
           <div class="project-list"></div>
       </div>
       <div class="task">
-        <input type="text" id="inpTitle" placeholder="Title">
-        <input type="text" id="inpDesc" placeholder="Description">
-        <input type="date" id="inpDate">
-        <select id="selectPriority">
-          <option value="mid">Mid</option>
-          <option value="high">High</option>
-          <option value="low">Low</option>
-        </select>
-        <select id="selectProject">
-          <option value="Inbox">Inbox</option>
-        </select>
-        <button id="addTask">Add</button>
+        <div id="top">
+          <input type="text" id="inpTitle" placeholder="Title">
+          <input type="text" id="inpDesc" placeholder="Description">
+        </div>
+        <div id="bot">
+          <input type="date" id="inpDate">
+          <select id="selectPriority">
+            <option value="mid">Mid</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+          <select id="selectProject">
+            <option value="Inbox">Inbox</option>
+          </select>
+          <button id="addTask">Add</button>
+        </div>
       </div>
       <button id="addTaskImg"><img src="../icons/icons8-plus-math-50.png" alt=""></button>
       <div class="task-list">
