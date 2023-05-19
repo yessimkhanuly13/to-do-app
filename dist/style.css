@@ -20,29 +20,19 @@ h1{
     flex-direction: column;
 }
 
-main{
-    display: flex;
-    justify-content: space-around; 
-}
 
 .project{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 20vw;
-    height: 20vh;
-    border: 1px solid;
 }
 
 .task{
-    display: flex;
-    flex-direction: column;
+    display: block;
     align-items: center;
-    width: 20vw;
-    height: 20vh;
-    border: 1px solid;
     justify-content: center;
+    gap: 5px;
 }
 
 button{
@@ -56,4 +46,9 @@ button{
 
 .taskInput{
     margin-bottom: 1vh;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
