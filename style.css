@@ -148,7 +148,6 @@ a{
 .todos{
     display: flex;
     justify-content: space-between;
-    border: 1px solid;
     margin: 1rem;
 }
 
@@ -162,8 +161,14 @@ a{
 
 .task-list{
     padding: 5rem;
+    display: flex;
+    flex-direction: column;
 }
 
+.complete{
+    margin-right: 1vw;
+
+}
 .delete:hover{
     background-color: red;
     color: white;
@@ -176,4 +181,22 @@ a{
 
 .completed{
     text-decoration: line-through
+}
+
+.task-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-h{
+    flex: 1;
+}
+
+.task-header button{
+    margin-right: 1vw;
+}
+
+.task-header button:hover{
+    background-color: black;
+    color: white;
 }
