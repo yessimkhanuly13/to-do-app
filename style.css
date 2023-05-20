@@ -128,7 +128,7 @@ a{
 }
 
 .project-list{
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .proj{
@@ -199,4 +199,10 @@ a{
 .task-header button:hover{
     background-color: black;
     color: white;
+}
+
+.project-side-list{
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 3vh;
 }
