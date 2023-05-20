@@ -1,10 +1,11 @@
 export class Task {
-    constructor (title, description, date, priority){
+    constructor (title, description, date, priority, project){
         this.title = title;
         this.description = description;
         this.date = date;
         this.priority = priority;
         this.completed = false;
+        this.project = project;
     }
 
     editTitle(title){
@@ -47,6 +48,10 @@ export class Task {
 
     getPriority(){
         return this.priority;
+    }
+
+    getProject(){
+        return this.project;
     }
 
 }
