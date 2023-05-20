@@ -58,7 +58,11 @@ function handleAddTask(){
 }
 
 function renderTasks(project){
-    boxTask.innerHTML = `<h3>${project.title}</h3>`;
+    boxTask.innerHTML = `<div class="task-header">
+        <h3 class="task-h">${project.title}</h3>
+        <button class="all-completed">Completed</button>
+        <button class="all-incompleted">Incompleted</button>
+    </div>`;
     project.getTasks().forEach(element => {
         let temp;
         if(element.completed === false){  
@@ -89,7 +93,11 @@ function renderTasks(project){
 }
 
 function renderAllTasks(){
-    boxTask.innerHTML = `<h3>All Tasks</h3>`;
+    boxTask.innerHTML = `<div class="task-header">
+        <h3 class="task-h">All tasks</h3>
+        <button class="all-completed">Completed</button>
+        <button class="all-incompleted">Incompleted</button>
+    </div>`;
     todoList.getAllTasks().forEach((element)=>{
         let temp;
             if(element.completed === false){
@@ -165,4 +173,5 @@ boxTask.addEventListener('click', (e)=>{
         console.log(task)
         renderTasks(project)
     }
+    console.log(e.target)
 })
