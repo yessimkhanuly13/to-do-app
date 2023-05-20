@@ -16,6 +16,7 @@ const boxTask = document.querySelector('.task-list');
 const addTaskImg = document.querySelector('#addTaskImg');
 const toggle = document.querySelector('#toggle');
 const allTasks = document.querySelector('#all-tasks');
+const cancelBtn = document.querySelector('#cancelTask');
 
 const inbox = new Project("Inbox");
 todoList.addProject(inbox);
@@ -43,13 +44,6 @@ function handleAddTask(){
         return;
     }
     const task = new Task(inpTitle.value, inpDesc.value, inpDate.value, selectPriority.value);
-    // const taskTemp = `<div class="task-temp">
-    //     <input type="checkbox" id="checkbox"></input>
-    //     <label for="checkbox">${task.title}</label>
-    //     <li>${task.description}</li>
-    //     <li>${task.date}</li>
-    // </div>`;
-    // boxTask.innerHTML += taskTemp;
     const project = todoList.getProjectByName(selectProject.value);
     addTaskImg.style.display = 'flex';
     const taskDiv = document.querySelector('.task');
@@ -66,8 +60,15 @@ function handleAddTask(){
 function renderTasks(project){
     boxTask.innerHTML = `<h3>${project.title}</h3>`;
     project.getTasks().forEach(element => {
-        const temp = `<input type="checkbox" id=${element.title}/>
-        <label for=${element.title}>${element.title} ${element.date} ${element.priority} ${element.description}</label>
+        const temp = `
+            <div class="todos" id="${project.title}">
+                <span class="list">${element.getTitle()}</span>
+                <span class="list">${element.getDescription()}</span>
+                <span class="list">${element.getDate()}</span>
+                <span class="list">${element.getPriority()}</span>
+                <button class="complete" id=${element.title} >Complete</button>
+                <button class="delete" id=${element.title}>Delete</button>
+            </div>
         `;
         boxTask.innerHTML += temp;
     });
@@ -102,10 +103,43 @@ addTaskImg.addEventListener('click', (e)=>{
 allTasks.addEventListener('click', ()=>{
     boxTask.innerHTML = `<h3>All Tasks</h3>`;
     todoList.getAllTasks().forEach((element)=>{
-        const temp = `<input type="checkbox" id=${element.title}/>
-        <label for=${element.title}>${element.title} ${element.date} ${element.priority} ${element.description}</label>
+        const temp = `
+            <div class="todos" id="${element.getTitle()}">
+            <span class="list">${element.title}</span>
+            <span class="list">${element.desc}</span>
+            <span class="list">${element.date}</span>
+            <span class="list">${element.priority}</span>
+            <button class="complete" id=${element.title}>Complete</button>
+            <button class="delete" id=${element.title}>Delete</button>
+        </div>
         `;
         boxTask.innerHTML += temp;
         console.log(element)
     })
+})
+
+cancelBtn.addEventListener('click', ()=>{
+    const task = document.querySelector('.task');
+    addTaskImg.style.display = 'flex';
+    task.style.display = 'none';
+    inpTitle.value = '';
+    selectPriority.value = '';
+    inpDate.value = '';
+    inpDesc.value = '';
+})
+
+boxTask.addEventListener('click', (e)=>{
+    const item = e.target;
+    if(item.classList[0] === 'delete'){
+        const project = todoList.getProjectByName(item.parentElement.id); 
+        const task = project.getTaskByName(item.id);
+        project.removeTask(task);
+        renderTasks(project)
+    }else if(item.classList[0] === 'complete'){
+        const project = todoList.getProjectByName(item.parentElement.id); 
+        const task = project.getTaskByName(item.id);
+        task.markAsCompleted();
+        console.log(task)
+        renderTasks(project)
+    }
 })

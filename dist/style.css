@@ -33,15 +33,30 @@
 
 .task{
     display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    position: absolute;
+    right: 43%;
+    bottom: 50%;
+    gap: 1vw;
+    border: 1px solid;
+    padding: 1vh;
+    background-color: rgb(238, 239, 242);
 }
+
+#addTask:hover{
+    background-color: green;
+    color: white;
+}
+
+#cancelTask:hover{
+    background-color: red;
+    color: white;
+}
+
 
 button{
     background-color: inherit;
-    width: 7vw;
-    height: 4vh;
+    width: 6vw;
+    height: 4.5vh;
 }
 
 #projectInput{
@@ -118,4 +133,43 @@ a{
 
 .proj{
     margin-top: 2vh;
+}
+
+#all-tasks:hover{
+    background-color: black;
+    color: white;
+}
+
+#addProject:hover{
+    background-color: green;
+    color: white;
+}
+
+.todos{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid;
+    margin: 1rem;
+}
+
+.list{
+    flex: 1;
+}
+
+.list-main{
+    margin: 1vh;
+}
+
+.task-list{
+    padding: 5rem;
+}
+
+.delete:hover{
+    background-color: red;
+    color: white;
+}
+
+.complete:hover{
+    background-color: green;
+    color: white;
 }

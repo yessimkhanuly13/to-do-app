@@ -45,6 +45,10 @@ export class Task {
         this.completed = true;
     }
 
+    getPriority(){
+        return this.priority;
+    }
+
 }
 
 export default Task;

@@ -35,6 +35,10 @@ class Project {
         return this.title;
     }
 
+    getTaskByName(title){
+        return this.tasks.find(task=>task.title === title )
+    }
+
 }
 
 export default Project;
