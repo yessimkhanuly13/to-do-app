@@ -20,7 +20,7 @@ const cancelBtn = document.querySelector('#cancelTask');
 
 const inbox = new Project("Inbox");
 todoList.addProject(inbox);
-boxProj.innerHTML += `<li><a href="#">${inbox.title}</a></li>`;
+boxProj.innerHTML += `<li class="project-side-list"><a href="#">${inbox.title}</a></li>`;
 
 
 function handleAddProject(){
@@ -31,7 +31,7 @@ function handleAddProject(){
 
     const project = new Project(projectInput.value);
     todoList.addProject(project);
-    const proj = `<li><a href="#">${project.title}</a></li>`;
+    const proj = `<li class="project-side-list"><a href="#">${project.title}</a></li>`;
     const option = `<option value="${project.title}">${project.title}</option>`;
     selectProject.innerHTML += option;
     boxProj.innerHTML += proj;
@@ -60,8 +60,8 @@ function handleAddTask(){
 function renderTasks(project){
     boxTask.innerHTML = `<div class="task-header">
         <h3 class="task-h">${project.title}</h3>
-        <button class="all-completed">Completed</button>
-        <button class="all-incompleted">Incompleted</button>
+        <button class="all-completed ${project.title}" >Completed</button>
+        <button class="all-incompleted ${project.title}">Incompleted</button>
     </div>`;
     project.getTasks().forEach(element => {
         let temp;
@@ -83,7 +83,6 @@ function renderTasks(project){
                     <span class="list completed">${element.getDescription()}</span>
                     <span class="list completed">${element.getDate()}</span>
                     <span class="list completed">${element.getPriority()}</span>
-                    <button class="complete" id=${element.title} >Complete</button>
                     <button class="delete" id=${element.title}>Delete</button>
                 </div>
             `;
@@ -95,8 +94,6 @@ function renderTasks(project){
 function renderAllTasks(){
     boxTask.innerHTML = `<div class="task-header">
         <h3 class="task-h">All tasks</h3>
-        <button class="all-completed">Completed</button>
-        <button class="all-incompleted">Incompleted</button>
     </div>`;
     todoList.getAllTasks().forEach((element)=>{
         let temp;
@@ -120,7 +117,6 @@ function renderAllTasks(){
                     <span class="list completed">${element.date}</span>
                     <span class="list completed">${element.priority}</span>
                     <span class="list completed">${element.getProject()}</span>
-                    <button class="complete" id=${element.title}>Complete</button>
                     <button class="delete" id=${element.title}>Delete</button>
                     </div>
                 `;
@@ -173,5 +169,46 @@ boxTask.addEventListener('click', (e)=>{
         console.log(task)
         renderTasks(project)
     }
-    console.log(e.target)
+    else if(item.classList[0] === 'all-completed'){
+        const project = todoList.getProjectByName(item.classList[1]);
+        boxTask.innerHTML = `<div class="task-header">
+                <h3 class="task-h">${project.title}</h3>
+                <button class="all-completed ${project.title}" >Completed</button>
+                <button class="all-incompleted ${project.title}">Incompleted</button>
+            </div>`;
+        project.getCompletedTasks().forEach((element)=>{
+            let temp = `
+                    <div class="todos" id="${element.getProject()}">
+                    <span class="list completed">${element.title}</span>
+                    <span class="list completed">${element.description}</span>
+                    <span class="list completed">${element.date}</span>
+                    <span class="list completed">${element.priority}</span>
+                    <span class="list completed">${element.getProject()}</span>
+                    <button class="delete" id=${element.title}>Delete</button>
+                    </div>
+                `;
+                boxTask.innerHTML += temp;
+        })
+    }else if(item.classList[0] === 'all-incompleted'){
+        const project = todoList.getProjectByName(item.classList[1]);
+        boxTask.innerHTML = `<div class="task-header">
+                <h3 class="task-h">${project.title}</h3>
+                <button class="all-completed ${project.title}" >Completed</button>
+                <button class="all-incompleted ${project.title}">Incompleted</button>
+            </div>`;
+        project.getIncompletedTasks().forEach((element)=>{
+            let temp = `
+                    <div class="todos" id="${element.getProject()}">
+                    <span class="list ">${element.title}</span>
+                    <span class="list ">${element.description}</span>
+                    <span class="list ">${element.date}</span>
+                    <span class="list ">${element.priority}</span>
+                    <span class="list ">${element.getProject()}</span>
+                    <button class="complete" id=${element.title}>Complete</button>
+                    <button class="delete" id=${element.title}>Delete</button>
+                    </div>
+                `;
+                boxTask.innerHTML += temp;
+        })
+    }
 })
